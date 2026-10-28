@@ -1,5 +1,49 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"><title>Del Otro Lado · Realidad Aumentada</title><script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script><style>
-html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#071e33;font-family:system-ui,sans-serif}a-scene{position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;display:block!important} .a-canvas{width:100%!important;height:100%!important}#header{position:fixed;z-index:100;top:max(12px,env(safe-area-inset-top));left:12px;right:12px;background:#082b4ad9;color:white;border-radius:15px;padding:11px 14px;text-align:center;pointer-events:none;font-weight:700}#status{font-weight:400;font-size:13px;margin-top:4px}#start{position:fixed;z-index:101;bottom:max(24px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);border:0;border-radius:40px;background:#fa087d;color:white;padding:15px 24px;font-size:16px;font-weight:700;white-space:nowrap}#error{display:none;position:fixed;inset:0;z-index:110;background:#071e33;color:white;padding:40px 20px;text-align:center}
-</style></head><body><div id="header">DEL OTRO LADO · Expo 2026<div id="status">Permití la cámara y enfocá el logo completo</div></div><button id="start">Activar animación</button><div id="error">Falta targets.mind en el repositorio. Subilo junto a index.html.</div>
-<a-scene mindar-image="imageTargetSrc: ./targets.mind; autoStart: true; uiLoading: yes; uiScanning: yes; uiError: yes" embedded color-space="sRGB" renderer="colorManagement: true" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false"><a-assets><video id="video" src="./animacion_logo.mp4" preload="auto" loop muted playsinline webkit-playsinline crossorigin="anonymous"></video></a-assets><a-camera position="0 0 0" look-controls="enabled: false"></a-camera><a-entity id="target" mindar-image-target="targetIndex: 0"><a-video src="#video" width="1" height="1.0708" position="0 0 0.015" material="shader: flat; side: double; transparent: false"></a-video></a-entity></a-scene>
-<script>const v=document.getElementById('video'),s=document.getElementById('status'),t=document.getElementById('target');let active=false;document.getElementById('start').addEventListener('click',async()=>{try{await v.play();active=true;s.textContent='Animación lista: enfocá el logo';}catch(e){s.textContent='No se pudo iniciar el video: '+e.name;}});t.addEventListener('targetFound',()=>{s.textContent='¡El arte cobra vida!';if(active)v.play().catch(()=>{});});t.addEventListener('targetLost',()=>{s.textContent='Volvé a enfocar el logo';v.pause()});fetch('./targets.mind',{method:'HEAD'}).then(r=>{if(!r.ok)document.getElementById('error').style.display='block'}).catch(()=>{});</script></body></html>
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#ffffff"><title>Del Otro Lado · Sexto Mundo</title>
+<script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff;font-family:system-ui,-apple-system,sans-serif}a-scene{position:fixed!important;inset:0!important;width:100%!important;height:100%!important}.mindar-ui-overlay{z-index:4}.mindar-ui-loading,.mindar-ui-scanning,.mindar-ui-error{background:transparent!important}.mindar-ui-scanning .scanning{opacity:.35}#top{position:fixed;z-index:9;top:max(16px,env(safe-area-inset-top));left:12px;right:12px;text-align:center;pointer-events:none;color:#07385c;text-shadow:0 1px 5px #fff;background:rgba(255,255,255,.8);border-radius:18px;padding:9px 12px}#top b{font-size:14px;letter-spacing:.08em}#top small{display:block;font-size:12px;margin-top:2px}#start{position:fixed;z-index:20;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;padding:25px;text-align:center}#start .panel{max-width:350px}#start h1{color:#07385c;font-size:27px}#start p{line-height:1.55;color:#36546a}button{border:0;background:#f6077b;color:white;padding:15px 23px;border-radius:30px;font-weight:700;font-size:16px;cursor:pointer}#status{position:fixed;z-index:9;bottom:max(18px,env(safe-area-inset-bottom));left:15px;right:15px;text-align:center;background:rgba(255,255,255,.86);color:#07385c;padding:10px;border-radius:15px;font-size:13px;pointer-events:none}
+</style></head><body>
+<div id="start"><div class="panel"><h1>DEL OTRO LADO</h1><p>El sexto mundo siempre estuvo ahí.<br>Enfocá el logo de la Expo para descubrir lo invisible.</p><button id="go">Abrir la cámara ✨</button><p style="font-size:12px">Permití el acceso a la cámara cuando tu teléfono lo solicite.</p></div></div>
+<div id="top"><b>DEL OTRO LADO · SEXTO MUNDO</b><small>Otra manera de mirar</small></div><div id="status">Enfocá el logo impreso para revelar su magia</div>
+<a-scene mindar-image="imageTargetSrc: ./targets.mind; autoStart: false; uiLoading: yes; uiScanning: yes; uiError: yes; filterMinCF: 0.001; filterBeta: 0.01" color-space="sRGB" renderer="colorManagement: true; physicallyCorrectLights: true; alpha: true" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" embedded>
+<a-assets></a-assets><a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false" raycaster="far: 10000; objects: .clickable"></a-camera><a-entity id="target" mindar-image-target="targetIndex: 0" sixth-world></a-entity></a-scene>
+<script>
+AFRAME.registerComponent('sixth-world',{
+ init:function(){
+  const THREE=AFRAME.THREE,root=this.el.object3D;this.parts=[];this.clock=0;
+  // The image target is 1144 x 1225. MindAR normalizes its width to 1.
+  const P=(x,y,z=0)=>new THREE.Vector3((x-572)/1144,(612.5-y)/1144,z);
+  const mat=(c,o=1)=>new THREE.MeshStandardMaterial({color:c,transparent:o<1,opacity:o,roughness:.22,metalness:.05,depthWrite:false,side:THREE.DoubleSide});
+  const glow=(c,o=.75)=>new THREE.MeshBasicMaterial({color:c,transparent:true,opacity:o,depthWrite:false,blending:THREE.AdditiveBlending,side:THREE.DoubleSide});
+  const add=(geo,m,x,y,z)=>{const ob=new THREE.Mesh(geo,m);ob.position.copy(P(x,y,z));root.add(ob);return ob};
+  const sphere=(x,y,z,r,c,o=.9)=>add(new THREE.SphereGeometry(r,14,10),mat(c,o),x,y,z);
+  // Turquoise waves: translucent 3D ribbons following the ORIGINAL left-side curl.
+  const water=[];
+  const routes=[[[177,575],[205,532],[241,522],[271,550],[291,597]],[[174,659],[190,711],[225,753],[259,785],[308,830]],[[238,597],[265,630],[269,671],[301,713],[341,748]]];
+  routes.forEach((r,i)=>{let curve=new THREE.CatmullRomCurve3(r.map((p,j)=>P(p[0],p[1],.016+Math.sin(j)*.014)));let mesh=new THREE.Mesh(new THREE.TubeGeometry(curve,45,i===0?.013:.010,9,false),mat(i===1?'#11c8e1':'#43e9f3',.68));root.add(mesh);water.push(mesh)});
+  for(let i=0;i<12;i++){let x=160+(i*37)%210,y=520+(i*61)%315;let b=sphere(x,y,.035+(i%3)*.008,.004+(i%4)*.002,'#6ce8f4',.75);water.push(b);this.parts.push({type:'drop',ob:b,phase:i*1.7,base:b.position.clone()})}
+  // Eye: transparent sculpted lens and a soft upper eyelid that closes briefly.
+  const eye=sphere(826,556,.031,.030,'#3ba4ad',.28);eye.scale.set(1.7,.85,.36);
+  const pupil=sphere(831,556,.044,.012,'#082c4e',.92);pupil.scale.z=.35;
+  const lid=add(new THREE.SphereGeometry(.032,24,12),mat('#b5d21b',.96),826,536,.054);lid.scale.set(1.65,.08,.26);
+  // Window: warm interior light that waxes and wanes, without replacing its outline.
+  const windowLight=add(new THREE.PlaneGeometry(.090,.114),glow('#ffc965',.22),725,269,.014);
+  const windowOrb=sphere(724,268,.033,.015,'#ffeaa2',.5);
+  // Portal: receding rings, placed inside the printed central navy arch.
+  const rings=[];
+  for(let i=0;i<4;i++){let ring=add(new THREE.TorusGeometry(.075-i*.012,.0018,6,55),glow(i%2?'#79e4ef':'#e6f25c',.22),560,570,.018+i*.025);ring.scale.set(.82,1.5,1);rings.push(ring)}
+  const star=sphere(566,388,.05,.022,'#e2f94b',.48);star.scale.z=.28;
+  const sparkles=[];
+  for(let i=0;i<24;i++){let a=i*2.39996,rad=.022+(i%7)*.014;let x=566+Math.cos(a)*rad*1144,y=397+Math.sin(a)*rad*1144;let s=sphere(x,y,.04+(i%4)*.011,.0025+(i%3)*.0015,i%3?'#e2f84b':'#8ceaff',.78);sparkles.push({ob:s,phase:i*1.4,base:s.position.clone()})}
+  this.fx={water,eye,pupil,lid,windowLight,windowOrb,rings,star,sparkles};
+  this.el.addEventListener('targetFound',()=>{document.getElementById('status').textContent='¡Descubriste lo invisible! ✨'});
+  this.el.addEventListener('targetLost',()=>{document.getElementById('status').textContent='Enfocá el logo impreso para revelar su magia'});
+ },
+ tick:function(t){if(!this.fx)return;const f=this.fx,s=t/1000;f.water.forEach((o,i)=>{if(i<3){o.scale.z=1+.4*Math.sin(s*1.9+i);o.position.z=.005*Math.sin(s*1.8+i)}});this.parts.forEach(p=>{p.ob.position.y=p.base.y+.009*Math.sin(s*1.6+p.phase);p.ob.position.z=p.base.z+.008*Math.cos(s*1.3+p.phase)});
+  const blink=(s%5.6);const closing=blink>4.2&&blink<4.52?Math.sin((blink-4.2)/.32*Math.PI):0;f.lid.scale.y=.08+closing*.85;f.lid.position.y=(612.5-536)/1144-closing*.014;f.pupil.scale.y=1-closing*.94;f.eye.scale.y=.85*(1-closing*.9);
+  const light=.26+.2*(1+Math.sin(s*1.35));f.windowLight.material.opacity=light;f.windowOrb.material.opacity=light*.65;f.windowOrb.scale.setScalar(.8+.3*Math.sin(s*1.35));f.rings.forEach((r,i)=>{r.material.opacity=.12+.14*(1+Math.sin(s*1.7+i*.8))/2;r.scale.z=1+.18*Math.sin(s+i)});f.star.scale.setScalar(.9+.18*Math.sin(s*2));f.sparkles.forEach((p,i)=>{p.ob.material.opacity=.3+.55*(1+Math.sin(s*2.4+p.phase))/2;p.ob.position.z=p.base.z+.008*Math.sin(s+p.phase)})}
+});
+const scene=document.querySelector('a-scene');document.getElementById('go').addEventListener('click',async()=>{document.getElementById('start').style.display='none';try{await scene.systems['mindar-image-system'].start()}catch(e){document.getElementById('start').style.display='flex';alert('No se pudo iniciar la cámara. Abrí el enlace en Safari o Chrome y permití el acceso.')}});
+</script></body></html>

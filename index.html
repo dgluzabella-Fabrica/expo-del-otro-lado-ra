@@ -4,6 +4,14 @@
 <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 <style>
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff;font-family:system-ui,-apple-system,sans-serif}a-scene{position:fixed!important;inset:0!important;width:100%!important;height:100%!important}.mindar-ui-overlay{z-index:4}.mindar-ui-loading,.mindar-ui-scanning,.mindar-ui-error{background:transparent!important}.mindar-ui-scanning .scanning{opacity:.35}#top{position:fixed;z-index:9;top:max(16px,env(safe-area-inset-top));left:12px;right:12px;text-align:center;pointer-events:none;color:#07385c;text-shadow:0 1px 5px #fff;background:rgba(255,255,255,.8);border-radius:18px;padding:9px 12px}#top b{font-size:14px;letter-spacing:.08em}#top small{display:block;font-size:12px;margin-top:2px}#start{position:fixed;z-index:20;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;padding:25px;text-align:center}#start .panel{max-width:350px}#start h1{color:#07385c;font-size:27px}#start p{line-height:1.55;color:#36546a}button{border:0;background:#f6077b;color:white;padding:15px 23px;border-radius:30px;font-weight:700;font-size:16px;cursor:pointer}#status{position:fixed;z-index:9;bottom:max(18px,env(safe-area-inset-bottom));left:15px;right:15px;text-align:center;background:rgba(255,255,255,.86);color:#07385c;padding:10px;border-radius:15px;font-size:13px;pointer-events:none}
+ a-scene {
+  z-index: 1 !important;
+  background: transparent !important;
+}
+
+a-scene canvas {
+  background: transparent !important;
+}
 </style></head><body>
 <div id="start"><div class="panel"><h1>DEL OTRO LADO</h1><p>El sexto mundo siempre estuvo ahí.<br>Enfocá el logo de la Expo para descubrir lo invisible.</p><button id="go">Abrir la cámara ✨</button><p style="font-size:12px">Permití el acceso a la cámara cuando tu teléfono lo solicite.</p></div></div>
 <div id="top"><b>DEL OTRO LADO · SEXTO MUNDO</b><small>Otra manera de mirar</small></div><div id="status">Enfocá el logo impreso para revelar su magia</div>
